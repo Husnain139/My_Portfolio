@@ -1,0 +1,206 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  padding-block: var(--space-4);
+  transition:
+    background var(--duration-base) var(--ease-out-quart),
+    border-color var(--duration-base) var(--ease-out-quart),
+    backdrop-filter var(--duration-base) var(--ease-out-quart);
+  border-bottom: 1px solid transparent;
+}
+
+.header.scrolled {
+  background: oklch(0.08 0 0 / 0.80);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom-color: oklch(0.60 0.195 280 / 0.12);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoMono {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  transition: color var(--duration-fast) var(--ease-out-quart);
+}
+
+.logo:hover .logoMono {
+  color: var(--primary-glow);
+}
+
+.logoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* Links */
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+}
+
+.link {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--ink-muted);
+  border-radius: var(--radius-md);
+  transition: color var(--duration-fast), background var(--duration-fast);
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: var(--space-3);
+  right: var(--space-3);
+  height: 1px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+
+.link:hover,
+.link.active {
+  color: var(--ink);
+  background: oklch(0.60 0.195 280 / 0.08);
+}
+
+.link.active::after {
+  transform: scaleX(1);
+}
+
+.cta {
+  padding: var(--space-2) var(--space-5);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--primary);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 20px oklch(0.60 0.195 280 / 0.30);
+  transition:
+    background var(--duration-fast) var(--ease-out-quart),
+    box-shadow var(--duration-fast) var(--ease-out-quart),
+    transform var(--duration-fast) var(--ease-out-quart);
+}
+
+.cta:hover {
+  background: var(--primary-glow);
+  box-shadow: 0 0 32px oklch(0.60 0.195 280 / 0.50);
+  transform: translateY(-1px);
+}
+
+/* Burger */
+.burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.burgerBar {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: background var(--duration-fast);
+}
+
+.burgerBar::before,
+.burgerBar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+
+.burgerBar::before { top: -6px; }
+.burgerBar::after  { top: 6px; }
+
+.burgerBar.burgerOpen {
+  background: transparent;
+}
+
+.burgerBar.burgerOpen::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burgerBar.burgerOpen::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .links {
+    position: fixed;
+    inset: 0;
+    top: 65px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-6);
+    background: oklch(0.08 0 0 / 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-out-quart);
+    z-index: var(--z-sticky);
+  }
+
+  .links.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .link {
+    font-size: var(--text-lg);
+    padding: var(--space-3) var(--space-6);
+  }
+
+  .cta {
+    font-size: var(--text-md);
+    padding: var(--space-3) var(--space-8);
+  }
+}
