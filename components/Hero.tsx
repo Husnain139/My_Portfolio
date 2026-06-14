@@ -3,6 +3,7 @@
 import styles from "./Hero.module.css";
 import { Spotlight } from "@/components/ui/spotlight";
 import { motion } from "framer-motion";
+import { useContact } from "@/lib/ContactContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -12,12 +13,13 @@ const fadeUp = {
     transition: {
       delay: i * 0.12,
       duration: 0.65,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as any,
     },
   }),
 };
 
 export default function Hero() {
+  const { openContact } = useContact();
   return (
     <section className={styles.hero} aria-label="Introduction">
       {/* Radial glow */}
@@ -109,13 +111,13 @@ export default function Hero() {
               Download CV
             </a>
 
-            <a
-              href="mailto:hussnainshafiq138@gmail.com"
+            <button
+              onClick={openContact}
               className={styles.ctaSecondary}
               id="hero-contact-btn"
             >
               hussnainshafiq138@gmail.com
-            </a>
+            </button>
           </motion.div>
 
           {/* Contact row */}

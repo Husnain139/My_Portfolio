@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ContactProvider } from "@/lib/ContactContext";
+import ContactModal from "@/components/ContactModal";
 
 export const metadata: Metadata = {
   title: "Muhammad Hussnain — AI Engineer",
@@ -39,7 +41,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ContactProvider>
+          {children}
+          <ContactModal />
+        </ContactProvider>
+      </body>
     </html>
   );
 }

@@ -1,6 +1,10 @@
+"use client";
+
 import styles from "./Footer.module.css";
+import { useContact } from "@/lib/ContactContext";
 
 export default function Footer() {
+  const { openContact } = useContact();
   const year = new Date().getFullYear();
 
   return (
@@ -17,8 +21,8 @@ export default function Footer() {
               what&apos;s possible with LLMs, agents, and production AI.
             </p>
           </div>
-          <a
-            href="mailto:hussnainshafiq138@gmail.com"
+          <button
+            onClick={openContact}
             className={styles.ctaBtn}
             id="footer-contact-btn"
           >
@@ -32,7 +36,7 @@ export default function Footer() {
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </button>
         </div>
       </div>
 

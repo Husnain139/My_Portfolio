@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./Navigation.module.css";
+import { useContact } from "@/lib/ContactContext";
 
 const NAV_LINKS = [
   { href: "#experience", label: "Experience" },
@@ -13,6 +14,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openContact } = useContact();
 
   useEffect(() => {
     const onScroll = () => {
@@ -56,13 +58,16 @@ export default function Navigation() {
             </li>
           ))}
           <li>
-            <a
-              href="mailto:hussnainshafiq138@gmail.com"
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                openContact();
+              }}
               className={styles.cta}
               id="nav-contact-btn"
             >
               Get in touch
-            </a>
+            </button>
           </li>
         </ul>
 
