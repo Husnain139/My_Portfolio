@@ -133,8 +133,8 @@ export default function Home() {
 
             <div className="stat-row" aria-label="Career highlights">
               <div><strong>1.5+</strong><span>YEARS BUILDING<br />SOFTWARE</span></div>
-              <div><strong>40%</strong><span>MANUAL EFFORT<br />REDUCED</span></div>
-              <div><strong>30%</strong><span>LATENCY<br />REDUCED</span></div>
+              <div><strong>12+</strong><span>PROJECTS<br />COMPLETED</span></div>
+              <div><strong>3</strong><span>CERTIFICATES<br />EARNED</span></div>
             </div>
 
             <div className="hero-actions">
