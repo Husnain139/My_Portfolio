@@ -132,7 +132,7 @@ export default function Home() {
             </p>
 
             <div className="stat-row" aria-label="Career highlights">
-              <div><strong>04+</strong><span>YEARS BUILDING<br />SOFTWARE</span></div>
+              <div><strong>1.5+</strong><span>YEARS BUILDING<br />SOFTWARE</span></div>
               <div><strong>40%</strong><span>MANUAL EFFORT<br />REDUCED</span></div>
               <div><strong>30%</strong><span>LATENCY<br />REDUCED</span></div>
             </div>
